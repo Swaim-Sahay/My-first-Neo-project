@@ -14,15 +14,17 @@
             --text-color: #2c3e50;
             --light-bg: #f8f9fa;
         }
-            body {
+    
+             body {
+            margin: 0;
             font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
             padding-bottom: 80px;
+
         }
 
         .main-container {
@@ -232,7 +234,7 @@
             }
         }
         /* FOOTER SECTION */
-     footer { bottom: 0;
+footer { bottom: 0;
     left: 0;
     width: 100%;
     background: linear-gradient(135deg, #3b56d0 0%, #630eb7 100%);
@@ -329,6 +331,18 @@ footer::before {
             </div>
         </div>
 
+         <!-- FOOTER SECTION -->
+       <footer>
+       <div class="footer-content">
+        <p>© 2025 NeoRide - Your Safety First</p>
+        <div class="footer-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+</footer>
     </div>
 
     <script>
@@ -363,17 +377,5 @@ footer::before {
             }, 2000);
         });
     </script>
-        <!-- FOOTER SECTION -->
-       <footer>
-    <div class="footer-content">
-        <p>© 2025 NeoRide - Your Safety First</p>
-        <div class="footer-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
-        </div>
-    </div>
-</footer>
 </body>
 </html>
