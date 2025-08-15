@@ -50,11 +50,7 @@ NeoRide is a modern, frontend-only ride booking platform designed for safe and c
 
 This repository is open for contributions! Feel free to fork and submit pull requests.
 
-## Contact
 
-For questions or support:
-https://www.linkedin.com/in/jaideep-shekhawat-92075b221/
-jaideep
 ---
 
 Thank you for checking out NeoRide! Experience safe, reliable rides right from your browser.
