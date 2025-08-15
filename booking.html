@@ -234,6 +234,71 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* RATING SECTION */
+.rating-section {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #eff1fb;
+    border-radius: 10px;
+    text-align: center;
+}
+.star-rating {
+    direction: rtl;
+    display: inline-flex;
+}
+.star-rating input {
+    display: none;
+}
+.star-rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+}
+.star-rating input:checked ~ label {
+    color: gold;
+}
+.star-rating label:hover, .star-rating label:hover ~ label{
+    color: gold;
+}
+textarea {
+    width: 100%;
+    height: 70px;
+    margin-top: 10px;
+    padding: 80x;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    resize: none;
+}
+.rating-bottons {
+    margin-top: 10px;
+}
+
+.submit-button {
+     padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+}
+.skip-button {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    background-color: rgb(238, 34, 34);
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px;
+}
+.skip-button:hover {
+    background-color: #999;
+}
+
+
         /* FOOTER SECTION */
 footer { bottom: 0;
     left: 0;
@@ -331,6 +396,35 @@ footer::before {
                 </div>
             </div>
         </div>
+        <!--RATING SECTION-->
+        <section class="rating-section">
+            <h2>Rate Your Ride</h2>
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5" tittle="5 stars">&#9733;</label>
+
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" tittle="4stars">&#9733;</label>
+
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" tittle="3 stars">&#9733;</label>
+
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" tittle="2 stars">&#9733;</label>
+
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" tittle="1 star">&#9733;</label>
+            </div>
+
+            <textarea placeholder="feedback..."></textarea>
+
+            <div class="rating-bottons">
+              <form action="index.html">
+                <button type="submit" class="submit-button">Submit</button>
+                <button type="skip" class="skip-button">Skip</button>
+                </form>
+            </div>
+        </section>
 
          <!-- FOOTER SECTION -->
        <footer>
