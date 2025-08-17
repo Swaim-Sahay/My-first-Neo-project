@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ride Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #eef2f7;
+    }
+    .booking-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      width: 350px;
+    }
+    .booking-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .booking-container input, .booking-container select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .booking-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .booking-container button:hover {
+      background: #0056b3;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="booking-container">
+    <h2>Book a Ride</h2>
+    <form id="bookingForm">
+      <input type="text" id="pickup" placeholder="Pickup Location" required>
+      <input type="text" id="drop" placeholder="Drop-off Location" required>
+      <input type="datetime-local" id="rideDate" required>
+      <button type="submit">Book Ride</button>
+      <p id="errorMsg" class="error"></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let pickup = document.getElementById("pickup").value.trim();
+      let drop = document.getElementById("drop").value.trim();
+      let rideDate = document.getElementById("rideDate").value;
+      let errorMsg = document.getElementById("errorMsg");
+
+      errorMsg.textContent = "";
+
+      if (pickup === "" || drop === "") {
+        errorMsg.textContent = "Pickup and drop-off locations are required.";
+        return;
+      }
+
+      if (pickup.toLowerCase() === drop.toLowerCase()) {
+        errorMsg.textContent = "Pickup and drop-off cannot be the same.";
+        return;
+      }
+
+      let selectedDate = new Date(rideDate);
+      let now = new Date();
+      if (selectedDate < now) {
+        errorMsg.textContent = "Please select a future date and time.";
+        return;
+      }
+
+      alert("Ride booked successfully from " + pickup + " to " + drop + "!");
+      document.getElementById("bookingForm").reset();
+    });
+  </script>
+</body>
+</html>
