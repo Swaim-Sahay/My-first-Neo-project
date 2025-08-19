@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="NeoRide.jpeg">
     <title>NeoRide - Your Safe Ride</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -42,6 +44,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -73,8 +76,13 @@
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .input-group {
@@ -108,11 +116,12 @@
             transition: color 0.3s ease;
         }
 
-        .input-group input:focus + i {
+        .input-group input:focus+i {
             color: #667eea;
         }
 
         .login-btn {
+            flex: 1;
             width: 100%;
             padding: 15px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -125,8 +134,14 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
         }
-
+        .btn-grp {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            width: 100%;
+        }
         .login-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
@@ -152,6 +167,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -176,13 +192,18 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             animation: shine 3s infinite;
         }
 
         @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
         }
 
         .main-content {
@@ -202,8 +223,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .status-card h3 {
@@ -218,9 +246,22 @@
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         .interactive-map {
@@ -250,8 +291,15 @@
         }
 
         @keyframes mapPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
         }
 
         .ride-info-grid {
@@ -323,9 +371,19 @@
         }
 
         @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
         }
 
         .emergency-contacts {
@@ -344,6 +402,7 @@
                 max-height: 0;
                 padding: 0 25px;
             }
+
             to {
                 opacity: 1;
                 max-height: 500px;
@@ -442,8 +501,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .modal-content {
@@ -461,6 +525,7 @@
                 opacity: 0;
                 transform: scale(0.7);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -514,7 +579,8 @@
             gap: 15px;
         }
 
-        .booking-form input, .booking-form select {
+        .booking-form input,
+        .booking-form select {
             padding: 12px 15px;
             border: 2px solid #e1e1e1;
             border-radius: 10px;
@@ -522,7 +588,8 @@
             transition: all 0.3s ease;
         }
 
-        .booking-form input:focus, .booking-form select:focus {
+        .booking-form input:focus,
+        .booking-form select:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -553,14 +620,16 @@
             display: inline-block;
             width: 20px;
             height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
+            border: 3px solid rgba(255, 255, 255, .3);
             border-radius: 50%;
             border-top-color: #fff;
             animation: spin 1s ease-in-out infinite;
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Location suggestion specific styles */
@@ -604,7 +673,7 @@
             .ride-info-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .floating-widgets {
                 position: relative;
                 right: auto;
@@ -615,56 +684,58 @@
                 margin: 20px 0;
             }
         }
+
         /* FOOTER SECTION */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #3b56d0 0%, #630eb7 100%);
-    color: white;
-    text-align: center;
-    padding: 20px 10px;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 -5px 15px rgba(102, 126, 234, 0.2);
-    z-index: 999;
-}
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #3b56d0 0%, #630eb7 100%);
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 -5px 15px rgba(102, 126, 234, 0.2);
+            z-index: 999;
+        }
 
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: shine 6s infinite;
-}
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 6s infinite;
+        }
 
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
 
-.footer-links {
-    display: flex;
-    gap: 15px;
-}
+        .footer-links {
+            display: flex;
+            gap: 15px;
+        }
 
-.footer-links a {
-    color: white;
-    font-size: 1.2em;
-    transition: all 0.3s ease;
-}
+        .footer-links a {
+            color: white;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
 
-.footer-links a:hover {
-    transform: translateY(-5px) scale(1.1);
-    color: #ffd700;
-}
+        .footer-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: #ffd700;
+        }
     </style>
 </head>
+
 <body>
     <div class="login-container" id="loginContainer">
         <div class="logo">
@@ -680,17 +751,24 @@ footer::before {
             <i class="fas fa-lock"></i>
             <i class="fas fa-eye" id="togglePassword" style="right: 18px; left: auto; cursor: pointer;"></i>
         </div>
-        <button class="login-btn" onclick="login()">
-            <span id="loginText">Sign In</span>
-            <div id="loginLoader" class="loading" style="display: none;"></div>
-        </button>
+        <div class="btn-grp">
+            <button class="login-btn" onclick="login()">
+                <span id="loginText">Sign In</span>
+                <div id="loginLoader" class="loading" style="display: none;"></div>
+            </button>
+            <a href="signup.html" class="login-btn" style="text-align: center; display: block;">
+                <span>Sign Up</span>
+            </a>
+        </div>
+
+
     </div>
 
     <div id="mainInterface">
         <header>
             <i class="fas fa-car-side"></i> NeoRide - Your Safe Journey
         </header>
-        
+
         <div class="main-content">
             <div class="booking-section" id="bookingSection">
                 <h2><i class="fas fa-map-marker-alt"></i> Book Your Ride</h2>
@@ -727,7 +805,10 @@ footer::before {
                     <h3>Live Location Tracking</h3>
                     <p>Click to expand map view</p>
                     <div id="mapContainer" style="display: none; margin-top: 20px;">
-                        <iframe id="liveMapFrame" src="https://www.google.com/maps/embed/v1/place?key=YOUR_Maps_API_KEY&q=BITS+Pilani+Hyderabad+Campus" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe id="liveMapFrame"
+                            src="https://www.google.com/maps/embed/v1/place?key=YOUR_Maps_API_KEY&q=BITS+Pilani+Hyderabad+Campus"
+                            width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen=""
+                            loading="lazy"></iframe>
                     </div>
                 </div>
 
@@ -752,7 +833,7 @@ footer::before {
                 <div class="emergency-section" id="emergencySection">
                     <h2><i class="fas fa-exclamation-triangle"></i> Emergency Center</h2>
                     <p>Press the SOS button if you feel unsafe</p>
-                    
+
                     <button class="panic-button" onclick="showEmergencyContacts()">
                         <i class="fas fa-exclamation-triangle"></i> SOS - EMERGENCY
                     </button>
@@ -829,7 +910,7 @@ footer::before {
             vehicle: "Tesla Model 3 - Black",
             license: "XYZ-7890"
         };
-        
+
         // Placeholder for user's current location (Gangapur, Rajasthan, India)
         const userCurrentLocation = { lat: 25.6888, lng: 76.3245 }; // Approximate coordinates for Gangapur, Rajasthan
 
@@ -862,7 +943,7 @@ footer::before {
         function autocomplete(inp, callback) {
             let currentFocus;
 
-            inp.addEventListener("input", async function(e) {
+            inp.addEventListener("input", async function (e) {
                 let a, b, i, val = this.value;
                 closeAllLists();
                 if (!val) { return false; }
@@ -880,7 +961,7 @@ footer::before {
                     b.innerHTML = "<strong>" + suggestions[i].substr(0, val.length) + "</strong>";
                     b.innerHTML += suggestions[i].substr(val.length);
                     b.innerHTML += "<input type='hidden' value='" + suggestions[i] + "'>";
-                    b.addEventListener("click", function(e) {
+                    b.addEventListener("click", function (e) {
                         inp.value = this.getElementsByTagName("input")[0].value;
                         closeAllLists();
                     });
@@ -888,7 +969,7 @@ footer::before {
                 }
             });
 
-            inp.addEventListener("keydown", function(e) {
+            inp.addEventListener("keydown", function (e) {
                 let x = document.getElementById(this.id + "autocomplete-list");
                 if (x) x = x.getElementsByTagName("div");
                 if (e.keyCode == 40) { // Arrow Down
@@ -980,16 +1061,16 @@ footer::before {
                 document.getElementById('bookingSection').style.display = 'none';
                 document.getElementById('rideStatus').style.display = 'block';
                 document.getElementById('emergencySection').style.display = 'block';
-                
+
                 document.getElementById('displayPickup').textContent = pickup;
                 document.getElementById('displayDropoff').textContent = dropoff;
-                
+
                 // Update map iframe source with dynamic locations
                 updateMap(pickup, dropoff);
 
                 showNotification(`Your ${rideType} ride has been booked!`, 'success');
                 startETACountdown();
-                
+
                 bookText.style.display = 'inline';
                 bookLoader.style.display = 'none';
             }, 2000);
@@ -1032,7 +1113,7 @@ footer::before {
             mapUpdateInterval = setInterval(() => {
                 // Simulate driver moving towards destination
                 // For demo, slightly change coordinates
-                currentLat += (Math.random() - 0.5) * 0.0005; 
+                currentLat += (Math.random() - 0.5) * 0.0005;
                 currentLng += (Math.random() - 0.5) * 0.0005;
 
                 // Update the map iframe source to show a new 'place' (driver's simulated location)
@@ -1058,12 +1139,12 @@ footer::before {
             document.querySelectorAll('.contact-item').forEach(item => {
                 item.classList.remove('selected');
             });
-            
+
             element.classList.add('selected');
-            
+
             selectedContact = { name, phone };
             document.getElementById('selectedContactName').textContent = `${name} (${phone})`;
-            
+
             document.getElementById('emergencyModal').style.display = 'flex';
         }
 
@@ -1089,7 +1170,7 @@ footer::before {
                     const message = `EMERGENCY! I need help with my NeoRide. My current location: ${googleMapsLink}. Driver: ${driverInfo.name}, Phone: ${driverInfo.phone}, Vehicle: ${driverInfo.vehicle}, License: ${driverInfo.license}`;
                     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                     window.open(url, '_blank');
-                    
+
                     console.log("Emergency alert sent with live location:", {
                         timestamp: new Date(),
                         recipient: selectedContact,
@@ -1120,7 +1201,7 @@ footer::before {
                     const lng = position.coords.longitude;
                     const googleMapsLink = `https://www.google.com/maps?q=${lat},${lng}`;
                     const message = `My current live location is: ${googleMapsLink}`;
-                    
+
                     // Here, you would typically send this to selected emergency contacts
                     // For demo, we'll just show a notification and log it.
                     showNotification('Live location retrieved. Ready to share.', 'success');
@@ -1148,9 +1229,9 @@ footer::before {
         function callDriver() {
             const driverPhone = driverInfo.phone.replace(/\s+/g, '');
             showNotification(`Calling driver: ${driverInfo.phone}...`, 'info');
-            
+
             window.open(`tel:${driverPhone}`);
-            
+
             setTimeout(() => {
                 showNotification(`Call connected to ${driverInfo.name}`, 'success');
             }, 2000);
@@ -1166,10 +1247,10 @@ footer::before {
         function showNotification(message, type = 'info') {
             const notification = document.getElementById('notification');
             const notificationText = document.getElementById('notificationText');
-            
+
             notificationText.textContent = message;
             notification.className = 'notification show';
-            
+
             if (type === 'success') {
                 notification.style.background = '#48bb78';
             } else if (type === 'error') {
@@ -1177,7 +1258,7 @@ footer::before {
             } else {
                 notification.style.background = '#4299e1';
             }
-            
+
             setTimeout(() => {
                 notification.classList.remove('show');
             }, 3000);
@@ -1186,11 +1267,11 @@ footer::before {
         function startETACountdown() {
             let eta = 10;
             const etaElement = document.getElementById('eta');
-            
+
             etaTimer = setInterval(() => {
                 eta--;
                 etaElement.textContent = `${eta} mins`;
-                
+
                 if (eta <= 0) {
                     clearInterval(etaTimer);
                     etaElement.textContent = 'Arrived!';
@@ -1199,13 +1280,13 @@ footer::before {
             }, 60000);
         }
 
-        document.addEventListener('keypress', function(e) {
+        document.addEventListener('keypress', function (e) {
             if (e.key === 'Enter' && document.getElementById('loginContainer').style.display !== 'none') {
                 login();
             }
         });
 
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             const modal = document.getElementById('emergencyModal');
             if (event.target === modal) {
                 closeModal();
@@ -1219,7 +1300,7 @@ footer::before {
                 setTimeout(() => statusIndicator.style.animation = 'bounce 1s infinite', 10);
             }
         }, 10000);
-        
+
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
 
@@ -1232,15 +1313,16 @@ footer::before {
         });
     </script>
     <footer>
-    <div class="footer-content">
-        <p>© 2025 NeoRide - Your Safety First</p>
-        <div class="footer-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+        <div class="footer-content">
+            <p>© 2025 NeoRide - Your Safety First</p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
+
 </html>
