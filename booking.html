@@ -42,6 +42,51 @@
     .booking-status.success{background:#e8f5e9;color:#2e7d32;}
     .booking-status.error{background:#ffebee;color:#c62828;}
 
+    /* Container around input and results */
+      .autocomplete-container {
+        position: relative;
+        width: 100%;
+        max-width: 400px; /* optional */
+      }
+
+      /* Input box styling */
+      .autocomplete-container input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      /* Dropdown results */
+      .autocomplete-results {
+        position: absolute;
+        top: 100%; /* directly below input */
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #ccc;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+        border-radius: 5px;
+        margin-top: 2px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      }
+
+      /* Individual suggestion */
+      .autocomplete-item {
+        padding: 10px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      /* Highlight on hover */
+      .autocomplete-item:hover {
+        background: #f0f0f0;
+      }
+
+
     /* Popular destinations */
     .popular-destinations{margin:3rem auto;padding:0 5%;max-width:1200px;}
     .popular-destinations h2{text-align:center;font-size:2rem;color:var(--primary-color);margin-bottom:1.5rem;}
@@ -111,8 +156,8 @@
   <!-- Booking -->
   <section class="booking-form-card">
     <div class="form-grid">
-      <div class="input-group"><label>FROM</label><input type="text" id="pickup"></div>
-      <div class="input-group"><label>TO</label><input type="text" id="destination"></div>
+      <div class="input-group"><label>FROM</label><input type="text" id="pickup"> <div id="pickup-suggestions" class="suggestions"></div></div>
+      <div class="input-group"><label>TO</label><input type="text" id="destination"><div id="destination-suggestions" class="suggestions"></div></div>
       <div class="input-group"><label>DATE & TIME</label><input type="datetime-local" id="dateTime"></div>
       <div class="input-group"><label>PASSENGERS</label><input type="number" id="passengers" value="1" min="1"></div>
       <div class="button-group">
@@ -195,6 +240,59 @@
       },2000);
     });
   });
+  const GEOAPIFY_API_KEY = "YOUR_GEOAPIFY_API_KEY"; // replace with your key
+
+  async function fetchSuggestions(query) {
+    if (!query) return [];
+    const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(query)}&apiKey=${GEOAPIFY_API_KEY}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.features || [];
+  }
+
+  function setupAutocomplete(inputId, suggestionsId) {
+    const input = document.getElementById(inputId);
+    const suggestionsBox = document.getElementById(suggestionsId);
+
+    input.addEventListener("input", async () => {
+      const query = input.value;
+      if (!query) {
+        suggestionsBox.style.display = "none";
+        return;
+      }
+      const features = await fetchSuggestions(query);
+
+      suggestionsBox.innerHTML = "";
+      if (features.length === 0) {
+        suggestionsBox.style.display = "none";
+        return;
+      }
+
+      features.forEach(f => {
+        const div = document.createElement("div");
+        div.textContent = f.properties.formatted;
+        div.addEventListener("click", () => {
+          input.value = f.properties.formatted;
+          suggestionsBox.style.display = "none";
+        });
+        suggestionsBox.appendChild(div);
+      });
+
+      suggestionsBox.style.display = "block";
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!suggestionsBox.contains(e.target) && e.target !== input) {
+        suggestionsBox.style.display = "none";
+      }
+    });
+  }
+
+  // Activate autocomplete for both inputs
+  setupAutocomplete("pickup", "pickup-suggestions");
+  setupAutocomplete("destination", "destination-suggestions");
+
 </script>
 </body>
 </html>  
