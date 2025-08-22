@@ -48,14 +48,58 @@
       color: red;
       font-size: 14px;
     }
+    /* geoapify autocomplete dropdown*/
+    .autocomplete-container {
+        position: relative;
+        width: 100%;
+        max-width: 400px; 
+      }
+
+      /* Input box styling */
+      .autocomplete-container input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      /* Dropdown results */
+      .autocomplete-results {
+        position: absolute;
+        top: 100%; /* directly below input */
+        left: 0;
+        right: 0;
+        background: white;
+        border: 1px solid #ccc;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+        border-radius: 5px;
+        margin-top: 2px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      }
+
+      /* Individual suggestion */
+      .autocomplete-item {
+        padding: 10px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      /* Highlight on hover */
+      .autocomplete-item:hover {
+        background: #f0f0f0;
+      }
+
   </style>
 </head>
 <body>
   <div class="booking-container">
     <h2>Book a Ride</h2>
     <form id="bookingForm">
-      <input type="text" id="pickup" placeholder="Pickup Location" required>
-      <input type="text" id="drop" placeholder="Drop-off Location" required>
+      <div class="autocomplete-container"><input type="text" id="pickup" placeholder="Pickup Location" required><div id="pickup-suggestions" class="autocomplete-results"></div></div>
+      <div class="autocomplete-container"><input type="text" id="drop" placeholder="Drop-off Location" required><div id="destination-suggestions" class="autocomplete-results"></div></div>
       <input type="datetime-local" id="rideDate" required>
       <button type="submit">Book Ride</button>
       <p id="errorMsg" class="error"></p>
@@ -93,6 +137,59 @@
       alert("Ride booked successfully from " + pickup + " to " + drop + "!");
       document.getElementById("bookingForm").reset();
     });
+    const GEOAPIFY_API_KEY = "YOUR_GEOAPIFY_API_KEY"; // replace with your key
+
+  async function fetchSuggestions(query) {
+    if (!query) return [];
+    const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(query)}&apiKey=${GEOAPIFY_API_KEY}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.features || [];
+  }
+
+  function setupAutocomplete(inputId, suggestionsId) {
+    const input = document.getElementById(inputId);
+    const suggestionsBox = document.getElementById(suggestionsId);
+
+    input.addEventListener("input", async () => {
+      const query = input.value;
+      if (!query) {
+        suggestionsBox.style.display = "none";
+        return;
+      }
+      const features = await fetchSuggestions(query);
+
+      suggestionsBox.innerHTML = "";
+      if (features.length === 0) {
+        suggestionsBox.style.display = "none";
+        return;
+      }
+
+      features.forEach(f => {
+        const div = document.createElement("div");
+        div.textContent = f.properties.formatted;
+        div.className = "autocomplete-item"; 
+        div.addEventListener("click", () => {
+          input.value = f.properties.formatted;
+          suggestionsBox.style.display = "none";
+        });
+        suggestionsBox.appendChild(div);
+      });
+
+      suggestionsBox.style.display = "block";
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!suggestionsBox.contains(e.target) && e.target !== input) {
+        suggestionsBox.style.display = "none";
+      }
+    });
+  }
+
+  // Activate autocomplete for both inputs
+  setupAutocomplete("pickup", "pickup-suggestions");
+  setupAutocomplete("drop", "destination-suggestions");
   </script>
 </body>
 </html>
