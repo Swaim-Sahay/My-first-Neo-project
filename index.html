@@ -19,9 +19,10 @@
         body {
             font-family: 'Poppins', sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
-            min-height: 100vh;
+            min-height: 200vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 20px;
             padding-bottom: 80px;
@@ -557,6 +558,99 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
+        /* Scroll to Top Button Styles */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        .scroll-to-top:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .scroll-to-top.clicked {
+            animation: clickPulse 0.3s ease-in-out;
+        }
+
+        @keyframes clickPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .scroll-to-top.show {
+            display: flex;
+            animation: slideInFromRight 0.5s ease-out;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            }
+            50% {
+                box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+            }
+        }
+
+        /* Responsive adjustments for scroll to top button */
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 120px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2em;
+                display: flex !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -737,6 +831,15 @@
 </head>
 
 <body>
+    <!-- Header section -->
+    <div style="width: 100%; padding: 40px; text-align: center; color: white; margin-bottom: 30px;">
+        <h1>🚗 Welcome to NeoRide</h1>
+        <p>Your Safe Journey Starts Here</p>
+        <div style="height: 200px; background: rgba(255,255,255,0.1); border-radius: 15px; margin: 20px 0; display: flex; align-items: center; justify-content: center;">
+            <p style="font-size: 1.2em;">Experience safe and reliable ride booking</p>
+        </div>
+    </div>
+
     <div class="login-container" id="loginContainer">
         <div class="logo">
             <i class="fas fa-car-side"></i>
@@ -867,6 +970,43 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Additional Content Section -->
+            <div style="margin-top: 50px; padding: 20px; background: #f8f9fa; border-radius: 15px;">
+                <h3>🌟 Why Choose NeoRide?</h3>
+                <p>Discover the benefits of choosing NeoRide for your transportation needs. We prioritize your safety and comfort.</p>
+                <div style="height: 400px; background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); border-radius: 10px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em;">
+                    <div style="text-align: center;">
+                        <h3>�️ Safety First</h3>
+                        <p>Advanced safety features and emergency contacts</p>
+                        <p>Real-time tracking and driver verification</p>
+                    </div>
+                </div>
+                <div style="height: 300px; background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); border-radius: 10px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1em;">
+                    <div style="text-align: center;">
+                        <h3>⚡ Fast & Reliable</h3>
+                        <p>Quick booking and efficient route optimization</p>
+                    </div>
+                </div>
+                <div style="height: 300px; background: linear-gradient(45deg, #ffecd2 0%, #fcb69f 100%); border-radius: 10px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: #333; font-size: 1.1em;">
+                    <div style="text-align: center;">
+                        <h3>💰 Affordable Pricing</h3>
+                        <p>Transparent pricing with no hidden fees</p>
+                    </div>
+                </div>
+                <div style="height: 250px; background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%); border-radius: 10px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: #333; font-size: 1.1em;">
+                    <div style="text-align: center;">
+                        <h3>🌍 Eco-Friendly</h3>
+                        <p>Supporting sustainable transportation solutions</p>
+                    </div>
+                </div>
+                <div style="height: 200px; background: linear-gradient(45deg, #d299c2 0%, #fef9d7 100%); border-radius: 10px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: #333; font-size: 1.1em;">
+                    <div style="text-align: center;">
+                        <h3>📱 Easy to Use</h3>
+                        <p>Simple interface with powerful features</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="floating-widgets">
@@ -885,6 +1025,11 @@
             © 2025 NeoRide - Your Safety First
         </footer>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top" onclick="scrollToTop(); return false;" title="Go to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
     <div id="notification" class="notification">
         <span id="notificationText"></span>
@@ -1310,6 +1455,124 @@
             password.setAttribute('type', type);
             // toggle the eye slash icon
             this.classList.toggle('fa-eye-slash');
+        });
+
+        // Scroll to Top Button functionality
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        // Ensure button is visible and bind click events
+        if (scrollToTopBtn) {
+            // Add click event listener as backup to onclick attribute
+            scrollToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Button clicked via event listener');
+                scrollToTop();
+            });
+
+            // Show/hide button based on scroll position
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollPosition > 100) { // Show button after scrolling 100px (reduced threshold)
+                    scrollToTopBtn.style.opacity = '1';
+                    scrollToTopBtn.style.transform = 'scale(1)';
+                } else {
+                    scrollToTopBtn.style.opacity = '0.7'; // Still visible but faded when at top
+                    scrollToTopBtn.style.transform = 'scale(0.8)';
+                }
+            });
+
+            // Make button always visible initially for testing
+            scrollToTopBtn.style.opacity = '0.7';
+            scrollToTopBtn.style.transform = 'scale(0.8)';
+            
+            console.log('Scroll to top button initialized successfully');
+            
+            // Test button immediately after page load
+            setTimeout(() => {
+                console.log('=== DEBUGGING INFO ===');
+                console.log('Testing button after page load...');
+                console.log('Button exists:', !!scrollToTopBtn);
+                console.log('Button is visible:', scrollToTopBtn.style.opacity);
+                console.log('Current scroll position:', window.pageYOffset);
+                
+                // Make scroll functions globally accessible for testing
+                window.testScroll = scrollToTop;
+                window.forceScroll = forceScrollToTop;
+                console.log('=== TEST FUNCTIONS AVAILABLE ===');
+                console.log('Type "testScroll()" or "forceScroll()" in console to test');
+                console.log('Or simply click the purple button in bottom-right');
+            }, 2000);
+        } else {
+            console.error('Scroll to top button not found!');
+        }
+
+        // Smooth scroll to top function - Enhanced for desktop
+        function scrollToTop() {
+            console.log('=== SCROLL FUNCTION CALLED ===');
+            console.log('Current scroll position (window.pageYOffset):', window.pageYOffset);
+            console.log('Current scroll position (documentElement.scrollTop):', document.documentElement.scrollTop);
+            console.log('Current scroll position (body.scrollTop):', document.body.scrollTop);
+            
+            // Add visual feedback
+            const btn = document.getElementById('scrollToTopBtn');
+            if (btn) {
+                btn.classList.add('clicked');
+                setTimeout(() => btn.classList.remove('clicked'), 300);
+                console.log('Visual feedback applied');
+            }
+            
+            // Force immediate scroll first (to ensure it works)
+            document.documentElement.scrollTop = 0; // Chrome, Firefox, IE, Opera
+            document.body.scrollTop = 0; // Safari
+            window.scrollTo(0, 0); // Fallback
+            
+            console.log('Immediate scroll executed');
+            console.log('New scroll position after immediate:', window.pageYOffset);
+            
+            // Then add smooth animation
+            setTimeout(() => {
+                try {
+                    window.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                    console.log('Smooth scroll also attempted');
+                } catch (e) {
+                    console.log('Smooth scroll failed:', e);
+                }
+            }, 50);
+            
+            // Additional check after a delay
+            setTimeout(() => {
+                console.log('Final position check:', window.pageYOffset);
+                if (window.pageYOffset > 0) {
+                    console.log('Scroll did not work, forcing again...');
+                    document.documentElement.scrollTop = 0;
+                    document.body.scrollTop = 0;
+                    window.scrollTo(0, 0);
+                }
+            }, 500);
+        }
+
+        // Alternative scroll function for testing
+        function forceScrollToTop() {
+            console.log('FORCE SCROLL CALLED');
+            const scrollableElement = document.scrollingElement || document.documentElement;
+            scrollableElement.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            window.scrollTo(0, 0);
+            console.log('Force scroll completed');
+        }
+
+        // Add keyboard accessibility for scroll to top button
+        scrollToTopBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                scrollToTop();
+            }
         });
     </script>
     <footer>
